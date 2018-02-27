@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void userLogin(){
 
         String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        String password = editTextPassword.getText().toString();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this,"Please Enter Email", Toast.LENGTH_SHORT).show();
@@ -73,6 +73,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (password.length()<6){
+            Toast.makeText(this, "password should be at least 6 characters long", Toast.LENGTH_SHORT).show();
+            return;
+
+        }
+
+
+
 
         progressDialog.setMessage("Logging in please wait...");
         progressDialog.show();
@@ -81,12 +89,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
                         if(task.isSuccessful()){
 
+                            progressDialog.hide();
                             finish();
-                            startActivity(new Intent(getApplicationContext(), profileActivity.class));
+                            startActivity(new Intent(getApplicationContext(),profileActivity.class));
                         }
+
+                        else {progressDialog.hide();
+                            Toast.makeText(LoginActivity.this, "login failed, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                        }//else
                     }
                 });
     }

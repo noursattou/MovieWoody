@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 public class profileActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonSearch;
     private Button buttonLogout;
+    private Button buttonReserve;
 
     private FirebaseAuth firebaseAuth;
 
@@ -36,9 +37,10 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser  user = firebaseAuth.getCurrentUser();
 
 
-        Button buttonReserve = (Button) findViewById(R.id.buttonReserve);
+         buttonReserve = (Button) findViewById(R.id.buttonReserve);
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
         buttonLogout= (Button) findViewById(R.id.buttonLogout);
+
         buttonReserve.setOnClickListener(this);
         buttonSearch.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
@@ -51,7 +53,12 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, LoginActivity.class));
         }
 
-//if(view==buttonReserve)
+if(view==buttonReserve){
+    finish();
+    startActivity(new Intent(this, Reservation.class));
+
+
+}
 
 
     }

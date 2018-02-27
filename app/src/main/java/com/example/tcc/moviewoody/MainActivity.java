@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // to initialize firebaseAuth object and we use this Ob to register user to the server:
         firebaseAuth = FirebaseAuth.getInstance();
 //user already logged in
@@ -54,14 +55,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void registerUser(){
         String email = editTextEmail.getText().toString().trim();
-        String password = editTextEmail.getText().toString().trim();
-        if(TextUtils.isEmpty(email)){
+        String password = ediTextPassword.getText().toString();
+
+            if(TextUtils.isEmpty(email)){
             // email is empty!
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();return;}
 
-        if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(email)){
             // password is empty!
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show(); return;}
+
+            /*if (password.length()<6){
+            Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_SHORT).show();return;}*/
+
 // if validations are ok
         progressDialog.setMessage("Registering..Please wait..");
         progressDialog.show();
@@ -78,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             finish();
                             startActivity(new Intent(getApplicationContext(),profileActivity.class));}
 
-                        else {Toast.makeText(MainActivity.this, "Registerstion failed .. Try again", Toast.LENGTH_SHORT).show();
+                        else {Toast.makeText(MainActivity.this, "Registerstion failed, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressDialog.hide();
 
                         }//else
