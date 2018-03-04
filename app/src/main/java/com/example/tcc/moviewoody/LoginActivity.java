@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
 
                         else {progressDialog.hide();
-                            Toast.makeText(LoginActivity.this, "login failed, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "login failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
 
                         }//else
