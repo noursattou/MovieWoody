@@ -21,7 +21,28 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".profileActivity" />
         <activity android:name=".Information" />
-        <activity android:name=".Reservation"></activity>
+        <activity android:name=".Reservation" />
+        <activity android:name=".AddCinema">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddMovie">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AdminHome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

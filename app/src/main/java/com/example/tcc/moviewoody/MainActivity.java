@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(firebaseAuth.getCurrentUser()!= null){
             // start profile activity
             finish();
-            startActivity(new Intent(getApplicationContext(),profileActivity.class));
+            startActivity(new Intent(getApplicationContext(),Information.class));
 
         }
 
@@ -57,16 +57,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String email = editTextEmail.getText().toString().trim();
         String password = ediTextPassword.getText().toString();
 
-            if(TextUtils.isEmpty(email)){
-            // email is empty!
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();return;}
+
 
         if(TextUtils.isEmpty(email)){
-            // password is empty!
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show(); return;}
+            // email is empty!
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();return;}
 
-            /*if (password.length()<6){
-            Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_SHORT).show();return;}*/
+        if(TextUtils.isEmpty(password)){
+            // password is empty!
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show(); return;}
+
+        if (password.length()<6){
+            Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_LONG).show();return;}
 
 // if validations are ok
         progressDialog.setMessage("Registering..Please wait..");
@@ -82,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             progressDialog.hide();
                             finish();
-                            startActivity(new Intent(getApplicationContext(),profileActivity.class));}
+                            startActivity(new Intent(getApplicationContext(),Information.class));}
 
-                        else {Toast.makeText(MainActivity.this, "Registerstion failed, "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        else {Toast.makeText(MainActivity.this, "Registerstion failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             progressDialog.hide();
 
                         }//else

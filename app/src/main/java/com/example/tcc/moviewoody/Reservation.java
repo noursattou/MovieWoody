@@ -20,8 +20,8 @@ import java.util.List;
 public class Reservation extends AppCompatActivity implements View.OnClickListener {
     Button buttonCancel;
 
-    List<String> spinnerArray =  new ArrayList<String>();
-ArrayAdapter<CharSequence> adapter;
+    //List<String> spinnerArray =  new ArrayList<String>();
+//ArrayAdapter<CharSequence> adapter;
 
 //spinnerArray.add("item1");
 //spinnerArray.add("item2");
@@ -31,18 +31,18 @@ ArrayAdapter<CharSequence> adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
-       Spinner CitySpinner = (Spinner) findViewById(R.id.spinnerCity);
+       //Spinner CitySpinner = (Spinner) findViewById(R.id.spinnerCity);
 
-        buttonCancel = (Button) findViewById(R.id.buttonCancel);
+       buttonCancel = (Button) findViewById(R.id.buttonCancel);
         buttonCancel.setOnClickListener(this);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       /* adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CitySpinner.setAdapter(adapter);
         CitySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
-        });
+        });*/
     }
     @Override
     public void onClick(View view) {

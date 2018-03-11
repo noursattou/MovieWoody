@@ -4,84 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images"
     tools:context="com.example.tcc.moviewoody.Information">
-
-   <ScrollView
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:fillViewport="true"
-
-       >
 
 
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_margin="15dp"
-            android:hint="please enter your first name"
-            android:id="@+id/editTextFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:hint="please enter your last name"
-            android:id="@+id/editTextLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:hint="please enter your address"
-            android:id="@+id/editTextAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dateOfBirth"
-            android:layout_gravity=""
+            android:id="@+id/textViewUserEmail"
+            android:layout_gravity="center_horizontal"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Date of birth:"
+            android:text="User Information" />
 
-            />
-        <DatePicker
+        <EditText
+            android:id="@+id/editTextFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
+            android:layout_margin="15dp"
+            android:hint="please enter your first name" />
 
-            android:spinnersShown="true" />
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="please enter your last name" />
+
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="please enter your address" />
 
 
         <Button
-            android:layout_margin="15dp"
             android:id="@+id/buttonSubmit"
-            android:text="Submit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <Button
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:id="@+id/buttonLogout"
-            android:text="Logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="Submit" />
+
+
+
 
     </LinearLayout>
 
 
 
-   </ScrollView>
-
 
 
 
 </android.support.constraint.ConstraintLayout>
+
+
