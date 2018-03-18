@@ -7,16 +7,23 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.content.Intent;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddMovie extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
@@ -30,6 +37,14 @@ public class AddMovie extends AppCompatActivity {
     private EditText editTextGenre;
     private EditText editTextDuration;
     private Button buttonAddMovie;
+
+
+
+    ListView listViewCinemas;
+    List<Cinema> list;
+    myAdapter2 myAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +60,10 @@ public class AddMovie extends AppCompatActivity {
         editTextGenre = (EditText) findViewById(R.id.editTextGenre);
         editTextDuration = (EditText) findViewById(R.id.editTextDuration);
         buttonAddMovie = (Button) findViewById(R.id.buttonAddMovie);
+        listViewCinemas = (ListView) findViewById(R.id.listViewCinemas);
+        list = new ArrayList<>();
+
+
 
         buttonAddMovie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,4 +107,37 @@ public class AddMovie extends AppCompatActivity {
 
     }
     ///////////////////////////////////////////////////
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //progressDialog.dismiss();
+                list.clear();
+                for (DataSnapshot snap : dataSnapshot.getChildren() ){
+                    Cinema cinema = snap.getValue(Cinema.class);
+                    list.add(cinema);
+                }
+               // myAdapter = new myAdapter2(AddMovie.this, list);
+               // listViewCinemas.setAdapter(myAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
+
+
+
+
+
+
+
 }

@@ -59,7 +59,12 @@ if(view==buttonReserve){
 
 
 }
+ else if (view==buttonSearch){
+ finish();
+    startActivity(new Intent(this, Search.class));
 
+
+}
 
     }
 }

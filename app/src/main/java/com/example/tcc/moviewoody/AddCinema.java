@@ -27,7 +27,7 @@ public class AddCinema extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cinema);
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Cinema");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Cinemas");
 
         editTextCinemaName = (EditText) findViewById(R.id.editTextCinemaName);
         editTextCinemaCity = (EditText) findViewById(R.id.editTextCinemaCity);
@@ -46,12 +46,10 @@ public class AddCinema extends AppCompatActivity  {
 
     ////////////////////////////////////////////////////////////////////////
     public void saveCinemaInformation() {
-        String name = editTextCinemaName.getText().toString().trim();
-        String city = editTextCinemaCity.getText().toString().trim();
-        String location = editTextCinemaLocation.getText().toString().trim();
+        String name = editTextCinemaName.getText().toString();
+        String city = editTextCinemaCity.getText().toString();
+        String location = editTextCinemaLocation.getText().toString();
         String id = databaseReference.push().getKey();
-
-        CinemaInformation cinemaInformation = new CinemaInformation(name, city, location, id);
 
 
         if (TextUtils.isEmpty(name)) {
@@ -69,7 +67,8 @@ public class AddCinema extends AppCompatActivity  {
             Toast.makeText(this, "Please enter location", Toast.LENGTH_SHORT).show();
             return;
         }
-        databaseReference.child(id).setValue(cinemaInformation);
+        Cinema cinema = new Cinema(city,name,location);
+        databaseReference.child(id).setValue(cinema);
         Toast.makeText(this, "Cinema is added", Toast.LENGTH_LONG).show();
 
     }

@@ -83,6 +83,10 @@
         android:inputType="textPersonName"
         android:text="00:00:00" />
 
+
+
+
+
     <Button
         android:id="@+id/buttonAddMovie"
         android:layout_width="wrap_content"
